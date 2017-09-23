@@ -8,7 +8,8 @@ let repoSchema = mongoose.Schema({
   repoId: {type: Number, unique: true},
   repoName: String,
   description: String,
-  url: String
+  url: String,
+  time : { type : Date, default: Date.now }
 });
 
 let Repo = mongoose.model('Repo', repoSchema);

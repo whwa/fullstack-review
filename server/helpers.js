@@ -68,7 +68,7 @@ module.exports = {
     db.Repo.find({ghHandle: req.body.handle})
     .limit(25)
     .exec((err, data) => {
-      console.log('query', data)
+      console.log('xxquery', data)
       //send response here w/data
       res.send(JSON.stringify(data));
     });
@@ -78,6 +78,7 @@ module.exports = {
     console.log('get received!', req.body)
     db.Repo.find()
     .limit(25)
+    .sort('-time')
     .exec((err, data) => {
       console.log('query', data)
       //send response here w/data

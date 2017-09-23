@@ -14,6 +14,20 @@ class App extends React.Component {
   }
   
   componentDidMount() {
+    // $.ajax({
+    //   type: 'GET',
+    //   url: 'http://localhost:1128/repos',
+    //   // data: JSON.stringify({handle : `${term}`}),
+    //   success: (data) => {
+    //     data = JSON.parse(data);
+    //     this.setState({repos : data});
+    //   },
+    //   contentType: 'application/json'
+    // });
+    this.refresh();
+  }
+
+  refresh() {
     $.ajax({
       type: 'GET',
       url: 'http://localhost:1128/repos',
@@ -48,7 +62,7 @@ class App extends React.Component {
     return (<div>
       <h1>Github Fetcher</h1>
       <RepoList repos={this.state.repos}/>
-      <Search onSearch={this.search.bind(this)}/>
+      <Search onSearch={this.search.bind(this)} onRef={this.refresh.bind(this)}/>
     </div>)
   }
 }
