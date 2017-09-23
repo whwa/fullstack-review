@@ -81,8 +81,8 @@ module.exports = {
     .exec((err, data) => {
       console.log('query', data)
       //send response here w/data
+      res.send(JSON.stringify(data));
     });
-    res.send('done')
   }
 
 };

@@ -12,6 +12,19 @@ class App extends React.Component {
     }
 
   }
+  
+  componentDidMount() {
+    $.ajax({
+      type: 'GET',
+      url: 'http://localhost:1128/repos',
+      // data: JSON.stringify({handle : `${term}`}),
+      success: (data) => {
+        data = JSON.parse(data);
+        this.setState({repos : data});
+      },
+      contentType: 'application/json'
+    });
+  }
 
   search (term) {
     console.log(`${term} was searched`);
